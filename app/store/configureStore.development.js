@@ -6,10 +6,10 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
 
-import * as counterActions from '../actions/counter';
+import * as loginActions from '../actions/login-actions';
 
 const actionCreators = {
-  ...counterActions,
+  ...loginActions,
   push,
 };
 
@@ -31,8 +31,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
   }) :
   compose;
 /* eslint-enable no-underscore-dangle */
+
 const enhancer = composeEnhancers(
-  applyMiddleware(sagaMiddleware, router, logger)
+  applyMiddleware(sagaMiddleware, router, logger),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
 
