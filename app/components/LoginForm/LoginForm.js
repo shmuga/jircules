@@ -3,17 +3,21 @@ import React, { Component } from 'react';
 import { Card, CardActions, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Checkbox from 'material-ui/Checkbox';
+import Loader from '../../components/Loader';
 import styles from './LoginForm.css';
 
 export default class Home extends Component {
   props: {
-    login: string,
-    password: string,
-    url: string,
+    isLoading: boolean,
+    username: ?string,
+    password: ?string,
+    url: ?string,
     onLoginChange: Function,
     onPasswordChange: Function,
     onUrlChange: Function,
-    onSubmit: Function
+    onSubmit: Function,
+    onCheckRemember: Function
   }
 
   render() {
@@ -24,31 +28,39 @@ export default class Home extends Component {
           <CardText>
             <TextField
               value={this.props.url}
-              onChange={this.props.onUrlChange}
+              onChange={(e) => this.props.onUrlChange(e.target.value)}
               fullWidth
               floatingLabelText="JIRA url"
             /><br />
             <TextField
-              value={this.props.login}
-              onChange={this.props.onLoginChange}
+              value={this.props.username}
+              onChange={(e) => this.props.onLoginChange(e.target.value)}
               fullWidth
+              type="text"
               hintText="Login"
             /><br />
             <TextField
               value={this.props.password}
-              onChange={this.props.onPasswordChange}
+              onChange={(e) => this.props.onPasswordChange(e.target.value)}
               fullWidth
               type="password"
               hintText="Password"
+            /><br />
+            <Checkbox
+              onCheck={(e, checked) => this.props.onCheckRemember(checked)}
+              label="Remember me"
             /><br />
           </CardText>
           <div className={styles.buttonBlock}>
             <CardActions>
               <RaisedButton
                 label="Login"
+                disabled={this.props.isLoading}
                 primary
                 onClick={this.props.onSubmit}
-              />
+              >
+                <Loader isLoading={this.props.isLoading} />
+              </RaisedButton>
             </CardActions>
           </div>
         </Card>

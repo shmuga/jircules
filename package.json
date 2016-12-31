@@ -157,6 +157,7 @@
   },
   "dependencies": {
     "bootstrap-grid": "^2.0.1",
+    "electron-config": "^0.2.1",
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
     "jira-client": "^4.2.0",
@@ -170,6 +171,7 @@
     "redux": "^3.6.0",
     "redux-saga": "^0.13.0",
     "redux-thunk": "^2.1.0",
+    "request-promise": "4",
     "source-map-support": "^0.4.6"
   },
   "devEngines": {

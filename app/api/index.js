@@ -32,3 +32,10 @@ export function login(auth) {
 export function findIssue(number) {
   return getClient().findIssue(number);
 }
+
+export function listIssues() {
+  const jira = getClient();
+  return jira.doRequest(jira.makeRequestHeader(jira.makeUri({
+    pathname: '/search?jql=project="OUT"',
+  })));
+}

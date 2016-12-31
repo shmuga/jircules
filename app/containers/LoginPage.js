@@ -9,19 +9,16 @@ import LoginForm from '../components/LoginForm/LoginForm';
 class LoginPage extends Component {
   props: {
     form: LoginState,
+    loading: boolean,
     actions: Object
   }
 
   render() {
     return (
       <LoginForm
-        login={this.props.form.username}
-        password={this.props.form.password}
-        url={this.props.form.url}
-        onUrlChange={this.props.actions.onUrlChange}
-        onLoginChange={this.props.actions.onLoginChange}
-        onPasswordChange={this.props.actions.onPasswordChange}
-        onSubmit={this.props.actions.onSubmitLoginForm}
+        {...this.props.actions}
+        {...this.props.form}
+        isLoading={this.props.loading}
       />
     );
   }
@@ -30,7 +27,8 @@ class LoginPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    form: state.login
+    form: state.login,
+    loading: state.loading,
   };
 }
 

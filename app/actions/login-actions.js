@@ -2,6 +2,7 @@
 export const LOGIN_INPUT = 'LOGIN_INPUT';
 export const PASSWORD_INPUT = 'PASSWORD_INPUT';
 export const URL_INPUT = 'URL_INPUT';
+export const REMEMBER_CHANGED = 'REMEMBER_CHANGED';
 export const START_LOGIN = 'START_LOGIN';
 
 type LoginAction = {
@@ -11,29 +12,36 @@ type LoginAction = {
   url?: ?string
 };
 
-export function onLoginChange(login: Object): LoginAction {
+export function onLoginChange(username: string): LoginAction {
   return {
     type: LOGIN_INPUT,
-    username: login.target.value,
+    username,
   };
 }
 
-export function onPasswordChange(password: Object): LoginAction {
+export function onPasswordChange(password: string): LoginAction {
   return {
     type: PASSWORD_INPUT,
-    password: password.target.value,
+    password,
   };
 }
 
-export function onUrlChange(url: Object): LoginAction {
+export function onUrlChange(url: string): LoginAction {
   return {
     type: URL_INPUT,
-    url: url.target.value,
+    url
+  };
+}
+
+export function onCheckRemember(remember: boolean) {
+  return {
+    type: REMEMBER_CHANGED,
+    remember,
   };
 }
 
 
-export function onSubmitLoginForm(): LoginAction {
+export function onSubmit(): LoginAction {
   return {
     type: START_LOGIN,
   };

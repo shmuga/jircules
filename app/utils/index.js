@@ -8,3 +8,4 @@ export function parseURI(url) {
   parser = null;
   return parsedUrl;
 }
+
