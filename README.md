@@ -1,4 +1,6 @@
 # jircules
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/shmuga/jircules.svg)](https://greenkeeper.io/)
 ![](./logo.png)
 
 > Your best open-source JIRA assistant
